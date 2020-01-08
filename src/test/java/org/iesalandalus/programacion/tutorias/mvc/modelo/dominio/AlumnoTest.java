@@ -1,9 +1,10 @@
 package org.iesalandalus.programacion.tutorias.mvc.modelo.dominio;
-/*
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.*;
 
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Alumno;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -244,4 +245,4 @@ public class AlumnoTest {
 		assertThat(CADENA_NO_ESPERADA, segundoAlumno.toString(), is(String.format("nombre=%s (%s), correo=%s, expediente=%s", NOMBRE_ARDR, "ARDR", CORREO_ARDR, "SP_ARDR_2")));
 	}
 
-}*/
+}
