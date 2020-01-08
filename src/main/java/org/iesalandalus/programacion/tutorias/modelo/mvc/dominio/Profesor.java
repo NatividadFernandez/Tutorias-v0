@@ -2,36 +2,31 @@ package org.iesalandalus.programacion.tutorias.modelo.mvc.dominio;
 
 import java.util.Objects;
 
-public class Alumno {
+public class Profesor {
 
 	private static final String ER_NOMBRE = "(?=.*\\s.+)(?![a-zA-Zñáéíóúü]\\s)(?!.*\\s[a-zA-Zñáéíóúü]\\s)(?!.*\\s[a-zA-Zñáéíóúü]$).[a-zA-Zñáéíóúü\\s]+";
-	private static final String PREFIJO_EXPEDIENTE = "SP_";
+	private static final String ER_DNI = "[0-9]{8,8}[a-zA-Z]$";
 	private static final String ER_CORREO = "\\w+[\\.\\w]*@\\w+[\\.\\w]*\\.\\w{2,5}\\b\\s?";
-	private static int ultimoIdentificador;
 	private String nombre;
+	private String dni;
 	private String correo;
-	private String expediente;
 
 	// Constructor con parámetros
-	public Alumno(String nombre, String correo) {
+	public Profesor(String nombre, String dni, String correo) {
 		setNombre(nombre);
+		setDni(dni);
 		setCorreo(correo);
-		incremientaUltimoIdentificador();
-		setExpediente(PREFIJO_EXPEDIENTE + getIniciales() + "_" + ultimoIdentificador);
-
 	}
 
-	// Constructor copia
-	public Alumno(Alumno alumno) {
-		if (alumno == null) {
-			throw new NullPointerException("ERROR: No es posible copiar un alumno nulo.");
+	// Constructor de copia
+	public Profesor(Profesor profesor) {
+		if (profesor == null) {
+			throw new NullPointerException("ERROR: No es posible copiar un profesor nulo.");
 		}
-		setNombre(alumno.nombre);
-		setCorreo(alumno.correo);
-	}
+		setNombre(profesor.nombre);
+		setDni(profesor.dni);
+		setCorreo(profesor.correo);
 
-	public static Alumno getAlumnoFicticio(String correo) {
-		return new Alumno("Nombre Propio", correo);
 	}
 
 	// Getters y Setters
@@ -51,7 +46,29 @@ public class Alumno {
 		if (!this.nombre.matches(ER_NOMBRE)) {
 			throw new IllegalArgumentException("ERROR: El nombre no tiene un formato válido.");
 		}
+	}
 
+	public String getDni() {
+		return dni;
+	}
+
+	private void setDni(String dni) {
+		if (dni == null) {
+			throw new NullPointerException("ERROR: El DNI no puede ser nulo.");
+		} else if (dni.trim().equals("")) {
+			throw new IllegalArgumentException("ERROR: El DNI no tiene un formato válido.");
+		}
+
+		if (dni.matches(ER_DNI)) {
+			if (!(comprobarLetraDNI(dni) == false)) {
+				this.dni = dni;
+			} else {
+
+				throw new IllegalArgumentException("ERROR: La letra del DNI no es correcta.");
+			}
+		} else {
+			throw new IllegalArgumentException("ERROR: El DNI no tiene un formato válido.");
+		}
 	}
 
 	public String getCorreo() {
@@ -72,12 +89,8 @@ public class Alumno {
 		this.correo = correo;
 	}
 
-	public String getExpediente() {
-		return expediente;
-	}
-
-	private void setExpediente(String expediente) {
-		this.expediente = expediente;
+	public static Profesor getProfesorFicticio(String DNI) {
+		return new Profesor("Nombre Propio", DNI, "correo@gmail.com");
 	}
 
 	private String formateaNombre(String nombre) {
@@ -101,6 +114,38 @@ public class Alumno {
 		return nuevoNombre;
 	}
 
+	private boolean comprobarLetraDNI(String dni) {
+
+		// setDni(dni);
+
+		// Separamos los numeros de la letra del DNI
+		String numerosDni = dni.substring(0, dni.length() - 1);
+		String letraDni = dni.substring(dni.length() - 1);
+
+		// Pasamos a entero la cadena de numeros del dni para poder dividir
+		int enteroDni = Integer.parseInt(numerosDni);
+
+		// Realizamos la operacion para saber el numero de letra
+		int numero = enteroDni % 23;
+
+		char[] caracteres = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
+				'H', 'L', 'C', 'K', 'E' };
+
+		letraDni.toUpperCase();
+		// Pasamos a char letraDni para poder comprarlo con el array de caracteres
+		char letraDniCaracter = letraDni.toUpperCase().charAt(0);
+
+		// Comprobamos la letra que ha introducido el usuario con la letra que hemos
+		// obtenido nosotros
+
+		if (caracteres[numero] == letraDniCaracter) {
+			return true;
+		} else {
+
+			return false;
+		}
+	}
+
 	private String getIniciales() {
 
 		String inicialesNombre = "";
@@ -119,13 +164,9 @@ public class Alumno {
 		return inicialesNombre;
 	}
 
-	private static void incremientaUltimoIdentificador() {
-		ultimoIdentificador++;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(correo);
+		return Objects.hash(dni);
 	}
 
 	@Override
@@ -133,16 +174,16 @@ public class Alumno {
 		if (this == obj) {
 			return true;
 		}
-		if (!(obj instanceof Alumno)) {
+		if (!(obj instanceof Profesor)) {
 			return false;
 		}
-		Alumno other = (Alumno) obj;
-		return Objects.equals(correo, other.correo);
+		Profesor other = (Profesor) obj;
+		return Objects.equals(dni, other.dni);
 	}
 
 	@Override
 	public String toString() {
-		return String.format("nombre=%s (%s), correo=%s, expediente=%s", nombre, getIniciales(), correo, expediente);
+		return String.format("nombre=%s (%s), DNI=%s, correo=%s", nombre, getIniciales(), dni, correo);
 	}
 
 }
