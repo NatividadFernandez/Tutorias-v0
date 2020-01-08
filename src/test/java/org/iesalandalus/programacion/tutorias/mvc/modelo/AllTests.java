@@ -1,5 +1,5 @@
 package org.iesalandalus.programacion.tutorias.mvc.modelo;
-
+/*
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.AlumnoTest;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.CitaTest;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.ProfesorTest;
@@ -20,4 +20,4 @@ import org.junit.runners.Suite.SuiteClasses;
 	ModeloTest.class })
 public class AllTests {
 
-}
+}*/
