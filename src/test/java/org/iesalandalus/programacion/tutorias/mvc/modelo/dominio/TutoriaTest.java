@@ -1,5 +1,4 @@
 package org.iesalandalus.programacion.tutorias.mvc.modelo.dominio;
-/*
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.sameInstance;
@@ -7,6 +6,8 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Profesor;
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Tutoria;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -133,4 +134,4 @@ public class TutoriaTest {
 		assertThat(CADENA_NO_ESPERADA, tutoria1.toString(), is(String.format("profesor=%s, nombre=%s", profesor1, NOMBRE1)));
 		assertThat(CADENA_NO_ESPERADA, tutoria2.toString(), is(String.format("profesor=%s, nombre=%s", profesor2, NOMBRE2_BIEN)));
 	}
-}*/
+}
