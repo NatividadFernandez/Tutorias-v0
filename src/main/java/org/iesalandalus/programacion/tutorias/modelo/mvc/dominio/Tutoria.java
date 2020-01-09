@@ -19,8 +19,8 @@ public class Tutoria {
 			throw new NullPointerException("ERROR: No es posible copiar una tutoría nula.");
 		}
 
-		setProfesor(profesor);
-		setNombre(nombre);
+		setProfesor(tutoria.profesor);
+		setNombre(tutoria.nombre);
 	}
 
 	// Getters y Setters
@@ -35,11 +35,11 @@ public class Tutoria {
 			throw new IllegalArgumentException("ERROR: El nombre no tiene un formato válido.");
 		}
 
-		this.nombre = nombre;
+		this.nombre = nombre.trim();
 	}
 
 	public Profesor getProfesor() {
-		return profesor;
+		return new Profesor(profesor);
 	}
 
 	private void setProfesor(Profesor profesor) {
@@ -47,7 +47,7 @@ public class Tutoria {
 			throw new NullPointerException("ERROR: El profesor no puede ser nulo.");
 		}
 
-		this.profesor = profesor;
+		this.profesor = new Profesor(profesor);
 	}
 
 	//hasCode y Equals
@@ -68,7 +68,6 @@ public class Tutoria {
 		return Objects.equals(nombre, other.nombre) && Objects.equals(profesor, other.profesor);
 	}
 
-	//toString
 	@Override
 	public String toString() {
 		return String.format("profesor=%s, nombre=%s", profesor, nombre);

@@ -88,7 +88,7 @@ public class Profesor {
 
 		this.correo = correo;
 	}
-
+	
 	public static Profesor getProfesorFicticio(String DNI) {
 		return new Profesor("Nombre Propio", DNI, "correo@gmail.com");
 	}
@@ -185,5 +185,9 @@ public class Profesor {
 	public String toString() {
 		return String.format("nombre=%s (%s), DNI=%s, correo=%s", nombre, getIniciales(), dni, correo);
 	}
+	
+	
+	
+	
 
 }
