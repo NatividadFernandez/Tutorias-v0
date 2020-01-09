@@ -1,5 +1,5 @@
 package org.iesalandalus.programacion.tutorias.mvc.modelo.dominio;
-/*
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.sameInstance;
@@ -10,6 +10,9 @@ import static org.junit.Assert.fail;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Profesor;
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Sesion;
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Tutoria;
 import org.junit.Test;
 
 public class SesionTest {
@@ -280,4 +283,4 @@ public class SesionTest {
 				TUTORIA, LocalDate.now().plusDays(7).format(Sesion.FORMATO_FECHA), HORA_INICIO.format(Sesion.FORMATO_HORA), 
 				HORA_FIN.format(Sesion.FORMATO_HORA), MINUTOS_DURACION)));
 	}
-}*/
+}
