@@ -1,5 +1,5 @@
 package org.iesalandalus.programacion.tutorias.mvc.modelo.dominio;
-/*
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.sameInstance;
@@ -10,6 +10,11 @@ import static org.junit.Assert.fail;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Alumno;
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Cita;
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Profesor;
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Sesion;
+import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Tutoria;
 import org.junit.Test;
 
 public class CitaTest {
@@ -109,7 +114,7 @@ public class CitaTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 		try {
-			cita = new Cita(ALUMNO, SESION, LocalTime.of(16, 11));
+		cita = new Cita(ALUMNO, SESION, LocalTime.of(16, 11));
 			fail(HORA_INCORRECTA);
 		} catch (IllegalArgumentException e) {
 			assertThat(MENSAJE_NO_CORRECTO, e.getMessage(), is(ERROR_HORA_NO_MULTIPLO));
@@ -150,4 +155,4 @@ public class CitaTest {
 		Cita cita = new Cita(ALUMNO, SESION, HORA);
 		assertThat(CADENA_NO_ESPERADA, cita.toString(), is(String.format("alumno=%s, sesion=%s, hora=%s", ALUMNO, SESION, HORA.format(Cita.FORMATO_HORA))));
 	}
-}*/
+}
