@@ -16,7 +16,7 @@ import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Tutoria;
 import org.junit.Test;
 
 public class SesionTest {
-	
+
 	private static final String ERROR_TUTORIA_NULA = "ERROR: La tutoría no puede ser nula.";
 	private static final String ERROR_FECHA_NULA = "ERROR: La fecha no puede ser nula.";
 	private static final String ERROR_FECHA_NO_VALIDA = "ERROR: Las sesiones de deben planificar para fechas futuras.";
@@ -45,7 +45,8 @@ public class SesionTest {
 	private static final String MINUTOS_DURACION_NO_ESPERADOS = "Los minutos de duración devueltos no son los mismos que los pasados al constructor.";
 	private static final String OBJETO_DEBERIA_SER_NULO = "No se debería haber creado el objeto sesión.";
 	private static final String REFERENCIA_NO_ESPERADA = "La referencia devuelta es la misma que la pasada.";
-	private static final Tutoria TUTORIA = new Tutoria(new Profesor("Bob Esponja", "11223344B", "bob@gmail.com"), "Resolución de dudas Unidad 3");
+	private static final Tutoria TUTORIA = new Tutoria(new Profesor("Bob Esponja", "11223344B", "bob@gmail.com"),
+			"Resolución de dudas Unidad 3");
 	private static final LocalDate FECHA = LocalDate.now().plusDays(7);
 	private static final LocalTime HORA_INICIO = LocalTime.of(17, 0);
 	private static final LocalTime HORA_FIN = LocalTime.of(19, 0);
@@ -61,7 +62,7 @@ public class SesionTest {
 		assertThat(HORA_FIN_NO_ESPERADA, sesion.getHoraFin(), is(HORA_FIN));
 		assertThat(MINUTOS_DURACION_NO_ESPERADOS, sesion.getMinutosDuracion(), is(MINUTOS_DURACION));
 	}
-	
+
 	@Test
 	public void constructorTutoriaNoValidaFechaValidaHoraInicioValidaHoraFinValidaDuracionMinutosValidosLanzaExcepcion() {
 		Sesion sesion = null;
@@ -75,7 +76,7 @@ public class SesionTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 	}
-	
+
 	@Test
 	public void constructorTutoriaValidaFechaNoValidaHoraInicioValidaHoraFinValidaDuracionMinutosValidosLanzaExcepcion() {
 		Sesion sesion = null;
@@ -98,7 +99,7 @@ public class SesionTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 	}
-	
+
 	@Test
 	public void constructorTutoriaValidaFechaValidaHoraInicioNoValidaHoraFinValidaDuracionMinutosValidosLanzaExcepcion() {
 		Sesion sesion = null;
@@ -139,7 +140,7 @@ public class SesionTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 	}
-	
+
 	@Test
 	public void constructorTutoriaValidaFechaValidaHoraInicioValidaHoraFinNoValidaDuracionMinutosValidosLanzaExcepcion() {
 		Sesion sesion = null;
@@ -189,7 +190,7 @@ public class SesionTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 	}
-	
+
 	@Test
 	public void constructorTutoriaValidaFechaValidaHoraInicioValidaHoraFinValidaDuracionMinutosNoValidosLanzaExcepcion() {
 		Sesion sesion = null;
@@ -212,7 +213,7 @@ public class SesionTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 	}
-	
+
 	@Test
 	public void constructorSesionValidaCopiaSesionCorrectamente() {
 		Sesion sesion1 = new Sesion(TUTORIA, FECHA, HORA_INICIO, HORA_FIN, MINUTOS_DURACION);
@@ -225,7 +226,7 @@ public class SesionTest {
 		assertThat(HORA_FIN_NO_ESPERADA, sesion2.getHoraFin(), is(HORA_FIN));
 		assertThat(MINUTOS_DURACION_NO_ESPERADOS, sesion2.getMinutosDuracion(), is(MINUTOS_DURACION));
 	}
-	
+
 	@Test
 	public void constructorSesionNulaLanzaExcepcion() {
 		Sesion sesion = null;
@@ -239,7 +240,7 @@ public class SesionTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 	}
-	
+
 	@Test
 	public void getSesionFicticiaDevuelveSesionConDichaTutoriaYFecha() {
 		Sesion sesion = Sesion.getSesionFicticia(TUTORIA, FECHA);
@@ -247,7 +248,7 @@ public class SesionTest {
 		assertThat(REFERENCIA_NO_ESPERADA, sesion.getTutoria(), not(sameInstance(TUTORIA)));
 		assertThat(FECHA_NO_ESPERADA, sesion.getFecha(), is(FECHA));
 	}
-	
+
 	@Test
 	public void getSesionFicticiaTutoriaNoValidaFechaValidaLanzaExcepcion() {
 		Sesion sesion = null;
@@ -261,7 +262,7 @@ public class SesionTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 	}
-	
+
 	@Test
 	public void getSesionFicticiaTutoriaValidaFechaNoValidaLanzaExcepcion() {
 		Sesion sesion = null;
@@ -275,12 +276,14 @@ public class SesionTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 	}
-	
+
 	@Test
 	public void toStringDevuelveLaCadenaEsperada() {
 		Sesion sesion = new Sesion(TUTORIA, FECHA, HORA_INICIO, HORA_FIN, MINUTOS_DURACION);
-		assertThat(CADENA_NO_ESPERADA, sesion.toString(), is(String.format("tutoria=%s, fecha=%s, horaInicio=%s, horaFin=%s, minutosDuracion=%d", 
-				TUTORIA, LocalDate.now().plusDays(7).format(Sesion.FORMATO_FECHA), HORA_INICIO.format(Sesion.FORMATO_HORA), 
-				HORA_FIN.format(Sesion.FORMATO_HORA), MINUTOS_DURACION)));
+		assertThat(CADENA_NO_ESPERADA, sesion.toString(),
+				is(String.format("tutoria=%s, fecha=%s, horaInicio=%s, horaFin=%s, minutosDuracion=%d", TUTORIA,
+						LocalDate.now().plusDays(7).format(Sesion.FORMATO_FECHA),
+						HORA_INICIO.format(Sesion.FORMATO_HORA), HORA_FIN.format(Sesion.FORMATO_HORA),
+						MINUTOS_DURACION)));
 	}
 }

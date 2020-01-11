@@ -28,6 +28,7 @@ public class Alumno {
 		}
 		setNombre(alumno.nombre);
 		setCorreo(alumno.correo);
+		setExpediente(alumno.expediente);
 	}
 
 	public static Alumno getAlumnoFicticio(String correo) {

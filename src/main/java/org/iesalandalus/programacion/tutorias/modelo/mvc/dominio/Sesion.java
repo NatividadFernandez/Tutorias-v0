@@ -24,10 +24,8 @@ public class Sesion {
 		setFecha(fecha);
 		setHoraInicio(horaInicio);
 		setHoraFin(horaFin);
-		// DUDAS
-		comprobarValidezSesion();
-
 		setMinutosDuracion(minutosDuracion);
+		comprobarValidezSesion();
 
 	}
 
@@ -49,7 +47,7 @@ public class Sesion {
 		return new Tutoria(tutoria);
 	}
 
-	public void setTutoria(Tutoria tutoria) {
+	private void setTutoria(Tutoria tutoria) {
 		if (tutoria == null) {
 			throw new NullPointerException("ERROR: La tutoría no puede ser nula.");
 		}
@@ -61,7 +59,7 @@ public class Sesion {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	private void setFecha(LocalDate fecha) {
 		if (fecha == null) {
 			throw new NullPointerException("ERROR: La fecha no puede ser nula.");
 		} else if (fecha.equals(fecha.now())) {
@@ -75,7 +73,7 @@ public class Sesion {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(LocalTime horaInicio) {
+	private void setHoraInicio(LocalTime horaInicio) {
 		if (horaInicio == null) {
 			throw new NullPointerException("ERROR: La hora de inicio no puede ser nula.");
 		} /*
@@ -95,7 +93,7 @@ public class Sesion {
 		return horaFin;
 	}
 
-	public void setHoraFin(LocalTime horaFin) {
+	private void setHoraFin(LocalTime horaFin) {
 		if (horaFin == null) {
 			throw new NullPointerException("ERROR: La hora de fin no puede ser nula.");
 		} /*
@@ -117,32 +115,29 @@ public class Sesion {
 		return minutosDuracion;
 	}
 
-	public void setMinutosDuracion(int minutosDuracion) {
+	private void setMinutosDuracion(int minutosDuracion) {
 		if (minutosDuracion == 0) {
 			throw new IllegalArgumentException("ERROR: Los minutos de duración no son válidos.");
 		}
 
-		int operacion;
-		operacion = this.horaFin.getHour() - this.horaInicio.getHour();
+		/*
+		 * int operacion; operacion = this.horaFin.getHour() -
+		 * this.horaInicio.getHour();
+		 * 
+		 * int resto; resto = minutosDuracion % operacion;
+		 * 
+		 * if (resto == 0) { this.minutosDuracion = minutosDuracion; } else { throw new
+		 * IllegalArgumentException(
+		 * "ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión."
+		 * ); }
+		 */
 
-		int resto;
-		resto = minutosDuracion % operacion;
-
-		if (resto == 0) {
-			this.minutosDuracion = minutosDuracion;
-		} else {
-			throw new IllegalArgumentException(
-					"ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión.");
-		}
+		this.minutosDuracion = minutosDuracion;
 
 	}
 
 	// Validez Sesion
 	private void comprobarValidezSesion() {
-
-		if (this.horaFin.equals(this.horaInicio) || this.horaFin.isBefore(this.horaInicio.plusMinutes(1))) {
-			throw new IllegalArgumentException("ERROR: Las hora para establecer la sesión no son válidas.");
-		}
 
 		if (this.horaInicio.isBefore(HORA_COMIENZO_CLASES) || this.horaInicio.equals(HORA_FIN_CLASES)
 				|| this.horaInicio.isAfter(HORA_FIN_CLASES)) {
@@ -152,6 +147,22 @@ public class Sesion {
 		if (this.horaFin.isBefore(HORA_COMIENZO_CLASES) || this.horaFin.equals(HORA_COMIENZO_CLASES)
 				|| this.horaFin.isAfter(HORA_FIN_CLASES)) {
 			throw new IllegalArgumentException("ERROR: La hora de fin no es válida.");
+		}
+
+		if (this.horaFin.equals(this.horaInicio) || this.horaFin.isBefore(this.horaInicio.plusMinutes(1))) {
+			throw new IllegalArgumentException("ERROR: Las hora para establecer la sesión no son válidas.");
+		}
+
+		//DUDAS
+		int operacion, resto;
+		operacion = this.horaFin.getHour() - this.horaInicio.getHour();
+
+		resto = minutosDuracion % operacion;
+
+		if (resto != 0) {
+			throw new IllegalArgumentException(
+					"ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión.");
+
 		}
 
 	}
