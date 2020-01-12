@@ -2,6 +2,7 @@ package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio;
 
 import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Alumno;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 
 public class Alumnos {
 	
@@ -22,8 +23,20 @@ public class Alumnos {
 
 	// Getters
 	public Alumno[] get() {
-		return coleccionAlumnos;
+		return copiaProfundaProfesores();
 	}
+	
+	//Copia profunda alumnos
+		private Alumno[] copiaProfundaProfesores() {
+			Alumno[] copiaAlumno = new Alumno[coleccionAlumnos.length];
+			for (int i = 0; i < coleccionAlumnos.length && coleccionAlumnos[i] != null; i++) {
+				copiaAlumno[i] = new Alumno(coleccionAlumnos[i]);
+
+			}
+
+			return copiaAlumno;
+
+		}
 
 	public int getCapacidad() {
 		return capacidad;
