@@ -22,11 +22,11 @@ public class Tutorias {
 
 	// Getters
 	public Tutoria[] get() {
-		return copiaProfundaProfesores();
+		return copiaProfundaTutorias();
 	}
 
 	// Copia profunda tutorias
-	private Tutoria[] copiaProfundaProfesores() {
+	private Tutoria[] copiaProfundaTutorias() {
 		Tutoria[] copiaTutoria = new Tutoria[coleccionTutorias.length];
 		for (int i = 0; i < coleccionTutorias.length && coleccionTutorias[i] != null; i++) {
 			copiaTutoria[i] = new Tutoria(coleccionTutorias[i]);
@@ -34,7 +34,7 @@ public class Tutorias {
 		return copiaTutoria;
 	}
 
-	//DUDAS
+	// Tutoria profesor
 	public Tutoria[] get(Profesor profesor) {
 		Tutoria[] tutoriaProfesor = new Tutoria[tamano];
 		int tutorias = 0;

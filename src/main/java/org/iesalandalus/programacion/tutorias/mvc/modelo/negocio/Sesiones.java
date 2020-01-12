@@ -23,11 +23,11 @@ public class Sesiones {
 
 	// Getters
 	public Sesion[] get() {
-		return coleccionSesiones;
+		return copiaProfundaSesiones();
 	}
 
 	// Copia profunda sesiones
-	private Sesion[] copiaProfundaProfesores() {
+	private Sesion[] copiaProfundaSesiones() {
 		Sesion[] copiaSesion = new Sesion[coleccionSesiones.length];
 		for (int i = 0; i < coleccionSesiones.length && coleccionSesiones[i] != null; i++) {
 			copiaSesion[i] = new Sesion(coleccionSesiones[i]);
@@ -35,6 +35,7 @@ public class Sesiones {
 		return copiaSesion;
 	}
 
+	// Sesion tutoria
 	public Sesion[] get(Tutoria tutoria) {
 		Sesion[] sesionTutoria = new Sesion[tamano];
 		int tutorias = 0;
