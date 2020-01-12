@@ -1,5 +1,5 @@
 package org.iesalandalus.programacion.tutorias.mvc.modelo;
-/*
+
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.verify;
 
@@ -35,7 +35,7 @@ public class ModeloTest {
 	private Cita cita;
 	
 	@InjectMocks private static Modelo modelo;
-	
+
 	@Mock private Alumnos alumnosSimulados;
 	@Mock private Profesores profesoresSimulados;
 	@Mock private Tutorias tutoriasSimuladas;
@@ -236,4 +236,4 @@ public class ModeloTest {
 		verify(citasSimuladas).get(sesion);
 	}
 	
-}*/
+}
