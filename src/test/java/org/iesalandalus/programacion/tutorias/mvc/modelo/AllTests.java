@@ -17,7 +17,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ AlumnoTest.class, CitaTest.class, ProfesorTest.class, SesionTest.class, TutoriaTest.class,
 	AlumnosTest.class, CitasTest.class, ProfesoresTest.class, SesionesTest.class, TutoriasTest.class,
-	/*ModeloTest.class*/ })
+	ModeloTest.class })
 public class AllTests {
 
 }
