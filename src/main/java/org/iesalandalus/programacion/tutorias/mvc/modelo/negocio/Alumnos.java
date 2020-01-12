@@ -5,38 +5,38 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Alumno;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 
 public class Alumnos {
-	
+
 	private Alumno[] coleccionAlumnos;
 	private int capacidad;
 	private int tamano;
-	
-	//Constructor con parámetros
+
+	// Constructor con parámetros
 	public Alumnos(int capacidad) {
-		if(capacidad <= 0) {
+		if (capacidad <= 0) {
 			throw new IllegalArgumentException("ERROR: La capacidad debe ser mayor que cero.");
 		}
 		this.capacidad = capacidad;
 		coleccionAlumnos = new Alumno[capacidad];
 		tamano = 0;
-		
+
 	}
 
 	// Getters
 	public Alumno[] get() {
 		return copiaProfundaProfesores();
 	}
-	
-	//Copia profunda alumnos
-		private Alumno[] copiaProfundaProfesores() {
-			Alumno[] copiaAlumno = new Alumno[coleccionAlumnos.length];
-			for (int i = 0; i < coleccionAlumnos.length && coleccionAlumnos[i] != null; i++) {
-				copiaAlumno[i] = new Alumno(coleccionAlumnos[i]);
 
-			}
-
-			return copiaAlumno;
+	// Copia profunda alumnos
+	private Alumno[] copiaProfundaProfesores() {
+		Alumno[] copiaAlumno = new Alumno[coleccionAlumnos.length];
+		for (int i = 0; i < coleccionAlumnos.length && coleccionAlumnos[i] != null; i++) {
+			copiaAlumno[i] = new Alumno(coleccionAlumnos[i]);
 
 		}
+
+		return copiaAlumno;
+
+	}
 
 	public int getCapacidad() {
 		return capacidad;
@@ -45,7 +45,7 @@ public class Alumnos {
 	public int getTamano() {
 		return tamano;
 	}
-	
+
 	// Insertar alumno
 	public void insertar(Alumno alumno) throws OperationNotSupportedException {
 
@@ -67,15 +67,14 @@ public class Alumnos {
 		}
 
 	}
-	
-	
+
 	// Buscamos el indice
 	public int buscarIndice(Alumno alumno) {
 		int indice = 0;
-		boolean alumnoEncontrada = false;
-		while (!tamanoSuperado(indice) && !alumnoEncontrada) {
+		boolean alumnoEncontrado = false;
+		while (!tamanoSuperado(indice) && !alumnoEncontrado) {
 			if (coleccionAlumnos[indice].equals(alumno)) {
-				alumnoEncontrada = true;
+				alumnoEncontrado = true;
 			} else {
 				indice++;
 			}
@@ -83,7 +82,7 @@ public class Alumnos {
 		}
 		return indice;
 	}
-	
+
 	// Comprobamos tamaño
 	private boolean tamanoSuperado(int indice) {
 		return indice >= tamano;
@@ -93,23 +92,23 @@ public class Alumnos {
 	private boolean capacidadSuperada(int indice) {
 		return indice >= capacidad;
 	}
-	
-	//Buscar alumnos	
+
+	// Buscar alumnos
 	public Alumno buscar(Alumno alumno) {
-		if(alumno == null) {
+		if (alumno == null) {
 			throw new IllegalArgumentException("ERROR: No se puede buscar un alumno nulo.");
 		}
-		
+
 		int indice = buscarIndice(alumno);
 		if (!tamanoSuperado(indice)) {
 			return new Alumno(coleccionAlumnos[indice]);
-		} else {			
+		} else {
 			return null;
 		}
 
 	}
-	
-	//Desplazar posicion a la izquierda
+
+	// Desplazar posicion a la izquierda
 	private void desplazarUnaPosicionHaciaIzquierda(int indice) {
 
 		for (int i = indice; !tamanoSuperado(i); i++) {
@@ -118,8 +117,8 @@ public class Alumnos {
 		}
 		tamano--;
 	}
-	
-	//Borrar alumnos
+
+	// Borrar alumnos
 	public void borrar(Alumno alumno) throws OperationNotSupportedException {
 
 		if (alumno == null) {
@@ -134,13 +133,5 @@ public class Alumnos {
 			throw new OperationNotSupportedException("ERROR: No existe ningún alumno con ese expediente.");
 		}
 	}
-
-	
-
-	
-	
-	
-	
-	
 
 }
