@@ -6,8 +6,8 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Profesor;
-import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Tutoria;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

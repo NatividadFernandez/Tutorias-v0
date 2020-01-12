@@ -10,9 +10,9 @@ import static org.junit.Assert.fail;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Profesor;
-import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Sesion;
-import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Tutoria;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
 import org.junit.Test;
 
 public class SesionTest {

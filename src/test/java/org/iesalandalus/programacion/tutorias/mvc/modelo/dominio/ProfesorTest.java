@@ -4,7 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.*;
 
-import org.iesalandalus.programacion.tutorias.modelo.mvc.dominio.Profesor;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.junit.Test;
 
 public class ProfesorTest {

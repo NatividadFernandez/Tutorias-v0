@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.modelo.mvc.dominio;
+package org.iesalandalus.programacion.tutorias.mvc.modelo.dominio;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -154,7 +154,7 @@ public class Sesion {
 		}
 
 		//DUDAS
-		int operacion, resto;
+	/*	int operacion, resto;
 		operacion = this.horaFin.getHour() - this.horaInicio.getHour();
 
 		resto = minutosDuracion % operacion;
@@ -163,13 +163,17 @@ public class Sesion {
 			throw new IllegalArgumentException(
 					"ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión.");
 
-		}
+		}*/
+		
+		if (((this.horaFin.toSecondOfDay() - this.horaInicio.toSecondOfDay()) / 60) % this.minutosDuracion != 0) {
+            throw new IllegalArgumentException("ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión.");
+        }
 
 	}
 
 	// Sesion ficticia
 	public static Sesion getSesionFicticia(Tutoria tutoria, LocalDate fecha) {
-		return new Sesion(tutoria, fecha, LocalTime.of(17, 0), LocalTime.of(19, 0), 30);
+		return new Sesion(tutoria, fecha, LocalTime.of(16, 0), LocalTime.of(19, 0), 30);
 	}
 
 	// hasCode y Equals

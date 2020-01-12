@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.modelo.mvc.dominio;
+package org.iesalandalus.programacion.tutorias.mvc.modelo.dominio;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -38,11 +38,14 @@ public class Cita {
 			throw new NullPointerException("ERROR: La hora no puede ser nula.");
 		}
 
-		if (hora.isBefore(sesion.getHoraInicio()) || hora.isAfter(sesion.getHoraFin())
-				|| hora.plusMinutes(sesion.getMinutosDuracion()).isAfter(sesion.getHoraFin())) {
+		if (hora.isBefore(sesion.getHoraInicio()) || hora.isAfter(sesion.getHoraFin().minusMinutes(sesion.getMinutosDuracion()))) {
 			throw new IllegalArgumentException(
 					"ERROR: La hora debe estar comprendida entre la hora de inicio y fin de la sesión.");
 		}
+		
+		if (((hora.toSecondOfDay() - sesion.getHoraInicio().toSecondOfDay()) / 60) % sesion.getMinutosDuracion() != 0) {
+            throw new IllegalArgumentException("ERROR: La hora debe comenzar en un múltiplo de los minutos de duración.");
+        }
 
 		/*
 		 * int operacion, resto; operacion = getSesion().getHoraFin().getHour() -
@@ -53,11 +56,6 @@ public class Cita {
 		 * if (resto != 0) { throw new IllegalArgumentException(
 		 * "ERROR: La hora debe comenzar en un múltiplo de los minutos de duración."); }
 		 */
-
-		if ((hora.getMinute() % sesion.getMinutosDuracion()) != 0) {
-			throw new IllegalArgumentException(
-					"ERROR: La hora debe comenzar en un múltiplo de los minutos de duración.");
-		}
 
 		this.hora = hora;
 	}

@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.modelo.mvc.dominio;
+package org.iesalandalus.programacion.tutorias.mvc.modelo.dominio;
 
 import java.util.Objects;
 
