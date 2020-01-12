@@ -18,7 +18,6 @@ public class Alumno {
 		setCorreo(correo);
 		incremientaUltimoIdentificador();
 		setExpediente(PREFIJO_EXPEDIENTE + getIniciales() + "_" + ultimoIdentificador);
-
 	}
 
 	// Constructor copia
@@ -31,6 +30,7 @@ public class Alumno {
 		setExpediente(alumno.expediente);
 	}
 
+	// Alumno ficticio
 	public static Alumno getAlumnoFicticio(String correo) {
 		return new Alumno("Nombre Propio", correo);
 	}
@@ -81,6 +81,7 @@ public class Alumno {
 		this.expediente = expediente;
 	}
 
+	// Formateamos el nombre
 	private String formateaNombre(String nombre) {
 		String nuevoNombre;
 		// Pasamos todo el nombre a misnuscula
@@ -102,6 +103,7 @@ public class Alumno {
 		return nuevoNombre;
 	}
 
+	// Recogemos las iniciales del nombre
 	private String getIniciales() {
 
 		String inicialesNombre = "";
@@ -120,10 +122,12 @@ public class Alumno {
 		return inicialesNombre;
 	}
 
+	// Incrementamos el identificador
 	private static void incremientaUltimoIdentificador() {
 		ultimoIdentificador++;
 	}
 
+	// hasCode y Equals
 	@Override
 	public int hashCode() {
 		return Objects.hash(correo);
@@ -141,6 +145,7 @@ public class Alumno {
 		return Objects.equals(correo, other.correo);
 	}
 
+	// to String
 	@Override
 	public String toString() {
 		return String.format("nombre=%s (%s), correo=%s, expediente=%s", nombre, getIniciales(), correo, expediente);

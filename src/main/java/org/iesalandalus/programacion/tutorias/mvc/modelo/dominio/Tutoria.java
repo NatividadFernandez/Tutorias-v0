@@ -50,7 +50,7 @@ public class Tutoria {
 		this.profesor = new Profesor(profesor);
 	}
 
-	//hasCode y Equals
+	// hasCode y Equals
 	@Override
 	public int hashCode() {
 		return Objects.hash(nombre, profesor);
@@ -68,13 +68,10 @@ public class Tutoria {
 		return Objects.equals(nombre, other.nombre) && Objects.equals(profesor, other.profesor);
 	}
 
+	// to String
 	@Override
 	public String toString() {
 		return String.format("profesor=%s, nombre=%s", profesor, nombre);
 	}
-	
-	
-	
-	
 
 }

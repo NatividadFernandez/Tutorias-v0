@@ -88,11 +88,13 @@ public class Profesor {
 
 		this.correo = correo;
 	}
-	
+
+	// Profesor fictio
 	public static Profesor getProfesorFicticio(String DNI) {
 		return new Profesor("Nombre Propio", DNI, "correo@gmail.com");
 	}
 
+	// Formateamos el nombre
 	private String formateaNombre(String nombre) {
 		String nuevoNombre;
 		// Pasamos todo el nombre a misnuscula
@@ -114,6 +116,7 @@ public class Profesor {
 		return nuevoNombre;
 	}
 
+	// Comprobamos la letra del dni
 	private boolean comprobarLetraDNI(String dni) {
 
 		// setDni(dni);
@@ -146,6 +149,7 @@ public class Profesor {
 		}
 	}
 
+	// Recogemos las iniciales del nombre
 	private String getIniciales() {
 
 		String inicialesNombre = "";
@@ -164,6 +168,7 @@ public class Profesor {
 		return inicialesNombre;
 	}
 
+	// hasCode y Equals
 	@Override
 	public int hashCode() {
 		return Objects.hash(dni);
@@ -181,13 +186,10 @@ public class Profesor {
 		return Objects.equals(dni, other.dni);
 	}
 
+	// to String
 	@Override
 	public String toString() {
 		return String.format("nombre=%s (%s), DNI=%s, correo=%s", nombre, getIniciales(), dni, correo);
 	}
-	
-	
-	
-	
 
 }

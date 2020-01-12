@@ -120,7 +120,7 @@ public class Citas {
 		return indice >= capacidad;
 	}
 
-	// Buscar alumnos
+	// Buscar citas
 	public Cita buscar(Cita cita) {
 		if (cita == null) {
 			throw new IllegalArgumentException("ERROR: No se puede buscar una cita nula.");
@@ -140,12 +140,12 @@ public class Citas {
 
 		for (int i = indice; !tamanoSuperado(i); i++) {
 			coleccionCitas[i] = coleccionCitas[i + 1];
-
 		}
+		
 		tamano--;
 	}
 
-	// Borrar alumnos
+	// Borrar citas
 	public void borrar(Cita cita) throws OperationNotSupportedException {
 
 		if (cita == null) {

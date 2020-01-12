@@ -36,13 +36,16 @@ public class Tutorias {
 
 	// Tutoria profesor
 	public Tutoria[] get(Profesor profesor) {
+		if (profesor == null) {
+			throw new NullPointerException("ERROR: El profesor no puede ser nulo.");
+		}
 		Tutoria[] tutoriaProfesor = new Tutoria[tamano];
 		int tutorias = 0;
-		for(int i = 0; !tamanoSuperado(i); i++) {
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			if (coleccionTutorias[i].getProfesor().equals(profesor)) {
 				tutoriaProfesor[tutorias++] = new Tutoria(coleccionTutorias[i]);
-			}			
-		}		
+			}
+		}
 		return tutoriaProfesor;
 	}
 
@@ -100,7 +103,7 @@ public class Tutorias {
 		return indice >= capacidad;
 	}
 
-	// Buscar alumnos
+	// Buscar tutorias
 	public Tutoria buscar(Tutoria tutoria) {
 		if (tutoria == null) {
 			throw new IllegalArgumentException("ERROR: No se puede buscar una tutoría nula.");
@@ -120,12 +123,12 @@ public class Tutorias {
 
 		for (int i = indice; !tamanoSuperado(i); i++) {
 			coleccionTutorias[i] = coleccionTutorias[i + 1];
-
 		}
+
 		tamano--;
 	}
 
-	// Borrar alumnos
+	// Borrar tutorias
 	public void borrar(Tutoria tutoria) throws OperationNotSupportedException {
 
 		if (tutoria == null) {

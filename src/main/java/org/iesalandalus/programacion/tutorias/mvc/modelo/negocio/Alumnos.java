@@ -113,8 +113,8 @@ public class Alumnos {
 
 		for (int i = indice; !tamanoSuperado(i); i++) {
 			coleccionAlumnos[i] = coleccionAlumnos[i + 1];
-
 		}
+		
 		tamano--;
 	}
 

@@ -37,6 +37,9 @@ public class Sesiones {
 
 	// Sesion tutoria
 	public Sesion[] get(Tutoria tutoria) {
+		if (tutoria == null) {
+			throw new NullPointerException("ERROR: La tutoría no puede ser nula.");
+		}
 		Sesion[] sesionTutoria = new Sesion[tamano];
 		int tutorias = 0;
 		for (int i = 0; !tamanoSuperado(i); i++) {
@@ -101,7 +104,7 @@ public class Sesiones {
 		return indice >= capacidad;
 	}
 
-	// Buscar alumnos
+	// Buscar sesiones
 	public Sesion buscar(Sesion sesion) {
 		if (sesion == null) {
 			throw new IllegalArgumentException("ERROR: No se puede buscar una sesión nula.");
@@ -121,12 +124,12 @@ public class Sesiones {
 
 		for (int i = indice; !tamanoSuperado(i); i++) {
 			coleccionSesiones[i] = coleccionSesiones[i + 1];
-
 		}
+
 		tamano--;
 	}
 
-	// Borrar alumnos
+	// Borrar sesiones
 	public void borrar(Sesion sesion) throws OperationNotSupportedException {
 
 		if (sesion == null) {

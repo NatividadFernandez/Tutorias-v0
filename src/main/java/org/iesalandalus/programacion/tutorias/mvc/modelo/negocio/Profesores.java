@@ -89,7 +89,7 @@ public class Profesores {
 		return indice >= capacidad;
 	}
 
-	// Buscar alumnos
+	// Buscar profesores
 	public Profesor buscar(Profesor profesor) {
 		if (profesor == null) {
 			throw new IllegalArgumentException("ERROR: No se puede buscar un profesor nulo.");
@@ -109,12 +109,12 @@ public class Profesores {
 
 		for (int i = indice; !tamanoSuperado(i); i++) {
 			coleccionProfesores[i] = coleccionProfesores[i + 1];
-
 		}
+
 		tamano--;
 	}
 
-	// Borrar alumnos
+	// Borrar profesore
 	public void borrar(Profesor profesor) throws OperationNotSupportedException {
 
 		if (profesor == null) {

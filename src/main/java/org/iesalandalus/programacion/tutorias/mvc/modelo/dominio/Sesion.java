@@ -76,17 +76,9 @@ public class Sesion {
 	private void setHoraInicio(LocalTime horaInicio) {
 		if (horaInicio == null) {
 			throw new NullPointerException("ERROR: La hora de inicio no puede ser nula.");
-		} /*
-			 * else if (horaInicio.isBefore(HORA_COMIENZO_CLASES) ||
-			 * horaInicio.equals(HORA_FIN_CLASES) || horaInicio.isAfter(HORA_FIN_CLASES)) {
-			 * throw new IllegalArgumentException("ERROR: La hora de inicio no es válida.");
-			 * }
-			 */
-
-		// comprobarValidezSesion();
+		}
 
 		this.horaInicio = horaInicio;
-
 	}
 
 	public LocalTime getHoraFin() {
@@ -96,17 +88,7 @@ public class Sesion {
 	private void setHoraFin(LocalTime horaFin) {
 		if (horaFin == null) {
 			throw new NullPointerException("ERROR: La hora de fin no puede ser nula.");
-		} /*
-			 * else if (horaFin.isBefore(HORA_COMIENZO_CLASES) ||
-			 * horaFin.isAfter(HORA_FIN_CLASES)) { throw new
-			 * IllegalArgumentException("ERROR: La hora de fin no es válida."); } else if
-			 * (horaFin.equals(this.horaInicio) ||
-			 * horaFin.isBefore(this.horaInicio.plusMinutes(1))) { throw new
-			 * IllegalArgumentException("ERROR: Las hora para establecer la sesión no son válidas."
-			 * ); }
-			 */
-
-		// comprobarValidezSesion();
+		}
 
 		this.horaFin = horaFin;
 	}
@@ -119,18 +101,6 @@ public class Sesion {
 		if (minutosDuracion == 0) {
 			throw new IllegalArgumentException("ERROR: Los minutos de duración no son válidos.");
 		}
-
-		/*
-		 * int operacion; operacion = this.horaFin.getHour() -
-		 * this.horaInicio.getHour();
-		 * 
-		 * int resto; resto = minutosDuracion % operacion;
-		 * 
-		 * if (resto == 0) { this.minutosDuracion = minutosDuracion; } else { throw new
-		 * IllegalArgumentException(
-		 * "ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión."
-		 * ); }
-		 */
 
 		this.minutosDuracion = minutosDuracion;
 
@@ -153,21 +123,24 @@ public class Sesion {
 			throw new IllegalArgumentException("ERROR: Las hora para establecer la sesión no son válidas.");
 		}
 
-		//DUDAS
-	/*	int operacion, resto;
-		operacion = this.horaFin.getHour() - this.horaInicio.getHour();
+		// DUDAS
+		/*
+		 * int operacion, resto; operacion = this.horaFin.getHour() -
+		 * this.horaInicio.getHour();
+		 * 
+		 * resto = minutosDuracion % operacion;
+		 * 
+		 * if (resto != 0) { throw new IllegalArgumentException(
+		 * "ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión."
+		 * );
+		 * 
+		 * }
+		 */
 
-		resto = minutosDuracion % operacion;
-
-		if (resto != 0) {
+		if (((this.horaFin.toSecondOfDay() - this.horaInicio.toSecondOfDay()) / 60) % this.minutosDuracion != 0) {
 			throw new IllegalArgumentException(
 					"ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión.");
-
-		}*/
-		
-		if (((this.horaFin.toSecondOfDay() - this.horaInicio.toSecondOfDay()) / 60) % this.minutosDuracion != 0) {
-            throw new IllegalArgumentException("ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión.");
-        }
+		}
 
 	}
 
