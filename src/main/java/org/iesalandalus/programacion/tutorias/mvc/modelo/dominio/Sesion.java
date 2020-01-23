@@ -106,7 +106,7 @@ public class Sesion {
 
 	// Validez Sesion
 	private void comprobarValidezSesion() {
-		
+
 		if (fecha.equals(fecha.now())) {
 			throw new IllegalArgumentException("ERROR: Las sesiones de deben planificar para fechas futuras.");
 		}
@@ -120,7 +120,7 @@ public class Sesion {
 				|| this.horaFin.isAfter(HORA_FIN_CLASES)) {
 			throw new IllegalArgumentException("ERROR: La hora de fin no es válida.");
 		}
-		
+
 		if (this.horaFin.equals(this.horaInicio) || this.horaFin.isBefore(this.horaInicio)) {
 			throw new IllegalArgumentException("ERROR: Las hora para establecer la sesión no son válidas.");
 		}
