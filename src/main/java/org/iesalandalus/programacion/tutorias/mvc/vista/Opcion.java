@@ -243,7 +243,7 @@ public enum Opcion {
 
 	public static Opcion getOpcionSegunOrdinal(int opcion) {
 
-		if (esOrdinal(opcion)) {
+		if (esOrdinalValido(opcion)) {
 			return values()[opcion];
 		} else {
 			throw new IllegalArgumentException("La opción introducida es incorrecta.");
@@ -251,10 +251,11 @@ public enum Opcion {
 
 	}
 
-	public static boolean esOrdinal(int opcion) {
+	public static boolean esOrdinalValido(int opcion) {
 		return (opcion >= 0 && opcion <= values().length - 1);
 	}
 
+	@Override
 	public String toString() {
 		return String.format("%d.- %s", ordinal(), mensaje);
 	}
