@@ -35,11 +35,11 @@ public class Sesion {
 			throw new NullPointerException("ERROR: No es posible copiar una sesión nula.");
 		}
 
-		setTutoria(sesion.tutoria);
-		setFecha(sesion.fecha);
-		setHoraInicio(sesion.horaInicio);
-		setHoraFin(sesion.horaFin);
-		setMinutosDuracion(sesion.minutosDuracion);
+		setTutoria(sesion.getTutoria());
+		setFecha(sesion.getFecha());
+		setHoraInicio(sesion.getHoraInicio());
+		setHoraFin(sesion.getHoraFin());
+		setMinutosDuracion(sesion.getMinutosDuracion());
 	}
 
 	// Getters y Setters
@@ -62,8 +62,6 @@ public class Sesion {
 	private void setFecha(LocalDate fecha) {
 		if (fecha == null) {
 			throw new NullPointerException("ERROR: La fecha no puede ser nula.");
-		} else if (fecha.equals(fecha.now())) {
-			throw new IllegalArgumentException("ERROR: Las sesiones de deben planificar para fechas futuras.");
 		}
 
 		this.fecha = fecha;
@@ -108,6 +106,10 @@ public class Sesion {
 
 	// Validez Sesion
 	private void comprobarValidezSesion() {
+		
+		if (fecha.equals(fecha.now())) {
+			throw new IllegalArgumentException("ERROR: Las sesiones de deben planificar para fechas futuras.");
+		}
 
 		if (this.horaInicio.isBefore(HORA_COMIENZO_CLASES) || this.horaInicio.equals(HORA_FIN_CLASES)
 				|| this.horaInicio.isAfter(HORA_FIN_CLASES)) {
@@ -118,25 +120,10 @@ public class Sesion {
 				|| this.horaFin.isAfter(HORA_FIN_CLASES)) {
 			throw new IllegalArgumentException("ERROR: La hora de fin no es válida.");
 		}
-
-		if (this.horaFin.equals(this.horaInicio) || this.horaFin.isBefore(this.horaInicio.plusMinutes(1))) {
+		
+		if (this.horaFin.equals(this.horaInicio) || this.horaFin.isBefore(this.horaInicio)) {
 			throw new IllegalArgumentException("ERROR: Las hora para establecer la sesión no son válidas.");
 		}
-
-		// DUDAS
-		/*
-		 * int operacion, resto; operacion = this.horaFin.getHour() -
-		 * this.horaInicio.getHour();
-		 * 
-		 * resto = minutosDuracion % operacion;
-		 * 
-		 * if (resto != 0) { throw new IllegalArgumentException(
-		 * "ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión."
-		 * );
-		 * 
-		 * }
-		 */
-
 		if (((this.horaFin.toSecondOfDay() - this.horaInicio.toSecondOfDay()) / 60) % this.minutosDuracion != 0) {
 			throw new IllegalArgumentException(
 					"ERROR: Los minutos de duración no es divisor de los minutos establecidos para toda la sesión.");

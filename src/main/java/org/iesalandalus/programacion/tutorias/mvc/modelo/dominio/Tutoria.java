@@ -19,8 +19,8 @@ public class Tutoria {
 			throw new NullPointerException("ERROR: No es posible copiar una tutoría nula.");
 		}
 
-		setProfesor(tutoria.profesor);
-		setNombre(tutoria.nombre);
+		setProfesor(tutoria.getProfesor());
+		setNombre(tutoria.getNombre());
 	}
 
 	// Getters y Setters

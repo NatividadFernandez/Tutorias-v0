@@ -23,9 +23,9 @@ public class Cita {
 		if (cita == null) {
 			throw new NullPointerException("ERROR: No es posible copiar una cita nula.");
 		}
-		setAlumno(cita.alumno);
-		setSesion(cita.sesion);
-		setHora(cita.hora);
+		setAlumno(cita.getAlumno());
+		setSesion(cita.getSesion());
+		setHora(cita.getHora());
 	}
 
 	// Getters y Setters

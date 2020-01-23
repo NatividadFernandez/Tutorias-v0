@@ -23,9 +23,9 @@ public class Profesor {
 		if (profesor == null) {
 			throw new NullPointerException("ERROR: No es posible copiar un profesor nulo.");
 		}
-		setNombre(profesor.nombre);
-		setDni(profesor.dni);
-		setCorreo(profesor.correo);
+		setNombre(profesor.getNombre());
+		setDni(profesor.getDni());
+		setCorreo(profesor.getCorreo());
 
 	}
 
