@@ -28,8 +28,8 @@ public class Sesiones {
 
 	// Copia profunda sesiones
 	private Sesion[] copiaProfundaSesiones() {
-		Sesion[] copiaSesion = new Sesion[coleccionSesiones.length];
-		for (int i = 0; i < coleccionSesiones.length && coleccionSesiones[i] != null; i++) {
+		Sesion[] copiaSesion = new Sesion[capacidad];
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			copiaSesion[i] = new Sesion(coleccionSesiones[i]);
 		}
 		return copiaSesion;
@@ -40,11 +40,11 @@ public class Sesiones {
 		if (tutoria == null) {
 			throw new NullPointerException("ERROR: La tutoría no puede ser nula.");
 		}
-		Sesion[] sesionTutoria = new Sesion[tamano];
-		int tutorias = 0;
+		Sesion[] sesionTutoria = new Sesion[capacidad];
+		int j = 0;
 		for (int i = 0; !tamanoSuperado(i); i++) {
 			if (coleccionSesiones[i].getTutoria().equals(tutoria)) {
-				sesionTutoria[tutorias++] = new Sesion(coleccionSesiones[i]);
+				sesionTutoria[j++] = new Sesion(coleccionSesiones[i]);
 			}
 		}
 		return sesionTutoria;

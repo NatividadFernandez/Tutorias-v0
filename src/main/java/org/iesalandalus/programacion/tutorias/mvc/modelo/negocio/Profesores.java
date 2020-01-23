@@ -27,8 +27,8 @@ public class Profesores {
 
 	// Copia profunda de Profesores
 	private Profesor[] copiaProfundaProfesores() {
-		Profesor[] copiaProfesor = new Profesor[coleccionProfesores.length];
-		for (int i = 0; i < coleccionProfesores.length && coleccionProfesores[i] != null; i++) {
+		Profesor[] copiaProfesor = new Profesor[capacidad];
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			copiaProfesor[i] = new Profesor(coleccionProfesores[i]);
 		}
 		return copiaProfesor;

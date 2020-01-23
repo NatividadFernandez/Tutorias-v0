@@ -23,19 +23,16 @@ public class Alumnos {
 
 	// Getters
 	public Alumno[] get() {
-		return copiaProfundaProfesores();
+		return copiaProfundaAlumnos();
 	}
 
 	// Copia profunda alumnos
-	private Alumno[] copiaProfundaProfesores() {
-		Alumno[] copiaAlumno = new Alumno[coleccionAlumnos.length];
-		for (int i = 0; i < coleccionAlumnos.length && coleccionAlumnos[i] != null; i++) {
+	private Alumno[] copiaProfundaAlumnos() {
+		Alumno[] copiaAlumno = new Alumno[capacidad];
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			copiaAlumno[i] = new Alumno(coleccionAlumnos[i]);
-
 		}
-
 		return copiaAlumno;
-
 	}
 
 	public int getCapacidad() {
@@ -114,7 +111,7 @@ public class Alumnos {
 		for (int i = indice; !tamanoSuperado(i); i++) {
 			coleccionAlumnos[i] = coleccionAlumnos[i + 1];
 		}
-		
+
 		tamano--;
 	}
 

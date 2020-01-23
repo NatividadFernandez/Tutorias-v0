@@ -27,8 +27,8 @@ public class Tutorias {
 
 	// Copia profunda tutorias
 	private Tutoria[] copiaProfundaTutorias() {
-		Tutoria[] copiaTutoria = new Tutoria[coleccionTutorias.length];
-		for (int i = 0; i < coleccionTutorias.length && coleccionTutorias[i] != null; i++) {
+		Tutoria[] copiaTutoria = new Tutoria[capacidad];
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			copiaTutoria[i] = new Tutoria(coleccionTutorias[i]);
 		}
 		return copiaTutoria;
@@ -39,11 +39,11 @@ public class Tutorias {
 		if (profesor == null) {
 			throw new NullPointerException("ERROR: El profesor no puede ser nulo.");
 		}
-		Tutoria[] tutoriaProfesor = new Tutoria[tamano];
-		int tutorias = 0;
+		Tutoria[] tutoriaProfesor = new Tutoria[capacidad];
+		int j = 0;
 		for (int i = 0; !tamanoSuperado(i); i++) {
 			if (coleccionTutorias[i].getProfesor().equals(profesor)) {
-				tutoriaProfesor[tutorias++] = new Tutoria(coleccionTutorias[i]);
+				tutoriaProfesor[j++] = new Tutoria(coleccionTutorias[i]);
 			}
 		}
 		return tutoriaProfesor;

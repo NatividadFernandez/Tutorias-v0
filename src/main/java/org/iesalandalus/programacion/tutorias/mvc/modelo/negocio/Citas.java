@@ -29,8 +29,8 @@ public class Citas {
 
 	// Copia profunda citas
 	private Cita[] copiaProfundaCitas() {
-		Cita[] copiaCita = new Cita[coleccionCitas.length];
-		for (int i = 0; i < coleccionCitas.length && coleccionCitas[i] != null; i++) {
+		Cita[] copiaCita = new Cita[capacidad];
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			copiaCita[i] = new Cita(coleccionCitas[i]);
 		}
 		return copiaCita;
@@ -41,11 +41,11 @@ public class Citas {
 		if (sesion == null) {
 			throw new NullPointerException("ERROR: La sesión no puede ser nula.");
 		}
-		Cita[] citaSesion = new Cita[tamano];
-		int tutorias = 0;
+		Cita[] citaSesion = new Cita[capacidad];
+		int j = 0;
 		for (int i = 0; !tamanoSuperado(i); i++) {
 			if (coleccionCitas[i].getSesion().equals(sesion)) {
-				citaSesion[tutorias++] = new Cita(coleccionCitas[i]);
+				citaSesion[j++] = new Cita(coleccionCitas[i]);
 			}
 		}
 		return citaSesion;
@@ -56,11 +56,11 @@ public class Citas {
 		if (alumno == null) {
 			throw new NullPointerException("ERROR: El alumno no puede ser nulo.");
 		}
-		Cita[] citaAlumno = new Cita[tamano];
-		int tutorias = 0;
+		Cita[] citaAlumno = new Cita[capacidad];
+		int j = 0;
 		for (int i = 0; !tamanoSuperado(i); i++) {
 			if (coleccionCitas[i].getAlumno().equals(alumno)) {
-				citaAlumno[tutorias++] = new Cita(coleccionCitas[i]);
+				citaAlumno[j++] = new Cita(coleccionCitas[i]);
 			}
 		}
 		return citaAlumno;
@@ -141,7 +141,7 @@ public class Citas {
 		for (int i = indice; !tamanoSuperado(i); i++) {
 			coleccionCitas[i] = coleccionCitas[i + 1];
 		}
-		
+
 		tamano--;
 	}
 
