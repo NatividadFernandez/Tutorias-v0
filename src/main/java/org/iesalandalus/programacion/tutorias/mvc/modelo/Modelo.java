@@ -27,8 +27,8 @@ public class Modelo {
 		alumnos.insertar(alumno);
 	}
 
-	public void buscar(Alumno alumno) {
-		alumnos.buscar(alumno);
+	public Alumno buscar(Alumno alumno) {
+		return alumnos.buscar(alumno);
 	}
 
 	public void borrar(Alumno alumno) throws OperationNotSupportedException {
@@ -44,8 +44,8 @@ public class Modelo {
 		profesores.insertar(profesor);
 	}
 
-	public void buscar(Profesor profesor) {
-		profesores.buscar(profesor);
+	public Profesor buscar(Profesor profesor) {
+		return profesores.buscar(profesor);
 	}
 
 	public void borrar(Profesor profesor) throws OperationNotSupportedException {
@@ -61,8 +61,8 @@ public class Modelo {
 		tutorias.insertar(tutoria);
 	}
 
-	public void buscar(Tutoria tutoria) {
-		tutorias.buscar(tutoria);
+	public Tutoria buscar(Tutoria tutoria) {
+		return tutorias.buscar(tutoria);
 	}
 
 	public void borrar(Tutoria tutoria) throws OperationNotSupportedException {
@@ -82,8 +82,8 @@ public class Modelo {
 		sesiones.insertar(sesion);
 	}
 
-	public void buscar(Sesion sesion) {
-		sesiones.buscar(sesion);
+	public Sesion buscar(Sesion sesion) {
+		return sesiones.buscar(sesion);
 	}
 
 	public void borrar(Sesion sesion) throws OperationNotSupportedException {
@@ -103,8 +103,8 @@ public class Modelo {
 		citas.insertar(cita);
 	}
 
-	public void buscar(Cita cita) {
-		citas.buscar(cita);
+	public Cita buscar(Cita cita) {
+		return citas.buscar(cita);
 	}
 
 	public void borrar(Cita cita) throws OperationNotSupportedException {
