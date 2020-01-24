@@ -23,25 +23,19 @@ public class Consola {
 		}
 	}
 
-	public static void mostrarCabecera(String menu) {
-		System.out.printf("%n%s%n", menu);
-		String decoracionMenu = "%0" + menu.length() + "d%n";
-		System.out.println(String.format(decoracionMenu, 0).replace("0", "-"));
+	public static void mostrarCabecera(String mensaje) {
+		System.out.printf("%n%s%n", mensaje);
+		String formatoStr = "%0" + mensaje.length() + "d%n";
+		System.out.println(String.format(formatoStr, 0).replace("0", "-"));
 	}
 
 	public static int elegirOpcion() {
-		int opcion = 0;
-		boolean opcionCorrecta = false;
+		int opcion;
 		do {
-
 			System.out.print("Elige una opción del menú: ");
 			opcion = Entrada.entero();
 
-			if (opcion >= 0 && opcion <= Opcion.values().length - 1) {
-				opcionCorrecta = true;
-			}
-
-		} while (!opcionCorrecta);
+		} while (!Opcion.esOrdinalValido(opcion));
 
 		return opcion;
 	}
@@ -89,23 +83,23 @@ public class Consola {
 
 		return Profesor.getProfesorFicticio(dniProfesor);
 	}
-	
+
 	public static Tutoria leerTutoria() {
 		String nombreTutoria;
-		Profesor profesor = leerProfesorFicticio();
 		System.out.println("*** DATOS TUTORÍA ***");
+		Profesor profesor = leerProfesorFicticio();
 		System.out.println("Introduce el nombre de la tutoría: ");
 		nombreTutoria = Entrada.cadena();
 		System.out.println("");
-		
-		return new Tutoria(profesor,nombreTutoria);
+
+		return new Tutoria(profesor, nombreTutoria);
 	}
-	
+
 	public static Sesion leerSesion() {
 		LocalDate fecha;
-		LocalTime horaInicioSesion,horaFinSesion;
-		int horaInicio,minInicio,horaFin,minFin;
-		int annio,mes,dia,minDuracion;
+		LocalTime horaInicioSesion, horaFinSesion;
+		int horaInicio, minInicio, horaFin, minFin;
+		int annio, mes, dia, minDuracion;
 		System.out.println("*** DATOS SESIÓN ***");
 		Tutoria tutoria = leerTutoria();
 		System.out.println("** Fecha **");
@@ -123,10 +117,10 @@ public class Consola {
 			System.out.println("Introduce el dia");
 			dia = Entrada.entero();
 		} while (dia < 1 || dia > 31);
-		
+
 		fecha = LocalDate.of(annio, mes, dia);
 		System.out.println("");
-		
+
 		System.out.println("** Hora Inicio Sesión **");
 		do {
 			System.out.println("Introduce la hora");
@@ -137,10 +131,10 @@ public class Consola {
 			System.out.println("Introduce los minutos");
 			minInicio = Entrada.entero();
 		} while (minInicio < 0 || minInicio > 59);
-		
+
 		horaInicioSesion = LocalTime.of(horaInicio, minInicio);
 		System.out.println("");
-		
+
 		System.out.println("** Hora Fin Sesión **");
 		do {
 			System.out.println("Introduce la hora");
@@ -151,24 +145,24 @@ public class Consola {
 			System.out.println("Introduce los minutos");
 			minFin = Entrada.entero();
 		} while (minFin < 0 || minFin > 59);
-		
+
 		horaFinSesion = LocalTime.of(horaFin, minFin);
 		System.out.println("");
-		
+
 		System.out.println("** Minutos de duración **");
 		do {
 			System.out.println("Introduce los minutos de duración de la sesión: ");
 			minDuracion = Entrada.entero();
 		} while (minDuracion < 0 || minDuracion > 59);
 		System.out.println("");
-		
-		return new Sesion(tutoria,fecha,horaInicioSesion,horaFinSesion,minDuracion);
-		
+
+		return new Sesion(tutoria, fecha, horaInicioSesion, horaFinSesion, minDuracion);
+
 	}
-	
+
 	public static Sesion leerSesionFicticia() {
 		LocalDate fecha;
-		int annio,mes,dia;
+		int annio, mes, dia;
 		System.out.println("*** DATOS SESIÓN ***");
 		Tutoria tutoria = leerTutoria();
 		System.out.println("** Fecha **");
@@ -186,19 +180,19 @@ public class Consola {
 			System.out.println("Introduce el dia");
 			dia = Entrada.entero();
 		} while (dia < 1 || dia > 31);
-		
+
 		fecha = LocalDate.of(annio, mes, dia);
 		System.out.println("");
-		
+
 		return Sesion.getSesionFicticia(tutoria, fecha);
 	}
-	
+
 	public static Cita leerCita() {
 		LocalTime horaCita;
-		int hora,min;
+		int hora, min;
 		Alumno alumno = leerAlumnoFicticio();
 		Sesion sesion = leerSesionFicticia();
-		
+
 		System.out.println("** Hora Cita **");
 		do {
 			System.out.println("Introduce la hora");
@@ -209,11 +203,11 @@ public class Consola {
 			System.out.println("Introduce los minutos");
 			min = Entrada.entero();
 		} while (min < 0 || min > 59);
-		
+
 		horaCita = LocalTime.of(hora, min);
 		System.out.println("");
-		
-		return new Cita(alumno,sesion,horaCita);
+
+		return new Cita(alumno, sesion, horaCita);
 	}
 
 }
