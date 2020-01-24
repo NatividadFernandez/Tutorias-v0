@@ -56,7 +56,7 @@ public class Controlador {
 	}
 
 	public Profesor buscarProfesor(Profesor profesor) {
-		return profesor;
+		return modelo.buscar(profesor);
 	}
 
 	public void borrarProfesor(Profesor profesor) throws OperationNotSupportedException {

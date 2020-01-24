@@ -89,16 +89,14 @@ public class Vista {
 	// Profesor
 	public void insertarProfesor() {
 		Consola.mostrarCabecera("Insertar Profesor");
-		Profesor profesor = Consola.leerProfesor();
 		try {
-			controlador.insertarProfesor(profesor);
+			controlador.insertarProfesor(Consola.leerProfesor());
 			System.out.println("Profesor insertado correctamente.");
-		} catch (NullPointerException | IllegalArgumentException | OperationNotSupportedException e) {
+		} catch (OperationNotSupportedException | IllegalArgumentException| NullPointerException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	// DUDAS
 	public void buscarProfesor() {
 		Consola.mostrarCabecera("Buscar Profesor");
 		Profesor profesor;
@@ -163,7 +161,7 @@ public class Vista {
 		Consola.mostrarCabecera("Borrar Tutoría");
 		try {
 			controlador.borrarTutoria(Consola.leerTutoria());
-			System.out.println("Tutoría correctamente.");
+			System.out.println("Tutoría borrada correctamente.");
 		} catch (NullPointerException | IllegalArgumentException | OperationNotSupportedException e) {
 			System.out.println(e.getMessage());
 		}

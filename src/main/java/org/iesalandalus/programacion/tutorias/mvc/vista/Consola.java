@@ -42,7 +42,6 @@ public class Consola {
 
 	public static Alumno leerAlumno() {
 		String nombreAlumno, correoAlumno;
-		System.out.println("*** DATOS ALUMNO ***");
 		System.out.println("Introduce el nombre del alumno: ");
 		nombreAlumno = Entrada.cadena();
 		System.out.println("Introduce el correo del alumno: ");
@@ -63,10 +62,9 @@ public class Consola {
 
 	public static Profesor leerProfesor() {
 		String nombreProfesor, dni, correoProfesor;
-		System.out.println("*** DATOS PROFESOR ***");
 		System.out.println("Introduce el nombre del profesor: ");
 		nombreProfesor = Entrada.cadena();
-		System.out.println("Introduce el DNI del prodesor: ");
+		System.out.println("Introduce el DNI del profesor: ");
 		dni = Entrada.cadena();
 		System.out.println("Introduce el correo del profesor: ");
 		correoProfesor = Entrada.cadena();
@@ -86,13 +84,11 @@ public class Consola {
 
 	public static Tutoria leerTutoria() {
 		String nombreTutoria;
-		System.out.println("*** DATOS TUTORÍA ***");
-		Profesor profesor = leerProfesorFicticio();
 		System.out.println("Introduce el nombre de la tutoría: ");
 		nombreTutoria = Entrada.cadena();
 		System.out.println("");
 
-		return new Tutoria(profesor, nombreTutoria);
+		return new Tutoria(leerProfesorFicticio(), nombreTutoria);
 	}
 
 	public static Sesion leerSesion() {
@@ -100,8 +96,9 @@ public class Consola {
 		LocalTime horaInicioSesion, horaFinSesion;
 		int horaInicio, minInicio, horaFin, minFin;
 		int annio, mes, dia, minDuracion;
-		System.out.println("*** DATOS SESIÓN ***");
+		
 		Tutoria tutoria = leerTutoria();
+		
 		System.out.println("** Fecha **");
 		do {
 			System.out.println("Introduce el año");
@@ -163,8 +160,9 @@ public class Consola {
 	public static Sesion leerSesionFicticia() {
 		LocalDate fecha;
 		int annio, mes, dia;
-		System.out.println("*** DATOS SESIÓN ***");
+		
 		Tutoria tutoria = leerTutoria();
+		
 		System.out.println("** Fecha **");
 		do {
 			System.out.println("Introduce el año");

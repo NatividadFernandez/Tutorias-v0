@@ -35,17 +35,21 @@ public class Profesor {
 	}
 
 	private void setNombre(String nombre) {
+		String nombreCorrecto;
+
 		if (nombre == null) {
 			throw new NullPointerException("ERROR: El nombre no puede ser nulo.");
 		} else if (nombre.trim().equals("")) {
 			throw new IllegalArgumentException("ERROR: El nombre no tiene un formato válido.");
 		}
 
-		this.nombre = formateaNombre(nombre);
+		nombreCorrecto = formateaNombre(nombre);
 
-		if (!this.nombre.matches(ER_NOMBRE)) {
+		if (!nombreCorrecto.matches(ER_NOMBRE)) {
 			throw new IllegalArgumentException("ERROR: El nombre no tiene un formato válido.");
 		}
+		
+		this.nombre = nombreCorrecto;
 	}
 
 	public String getDni() {
