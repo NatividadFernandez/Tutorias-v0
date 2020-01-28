@@ -58,7 +58,8 @@ public class Modelo {
 
 	// Tutoría
 	public void insertar(Tutoria tutoria) throws OperationNotSupportedException {
-		//No pasa este test debido a las comprobaciones de resctricion que no se piden en la tarea.
+		// No pasa este test debido a las comprobaciones de resctricion que no se piden
+		// en la tarea.
 		if (tutoria == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una tutoría nula.");
 		}
@@ -88,7 +89,8 @@ public class Modelo {
 
 	// Sesion
 	public void insertar(Sesion sesion) throws OperationNotSupportedException {
-		//No pasa este test debido a las comprobaciones de resctricion que no se piden en la tarea.
+		// No pasa este test debido a las comprobaciones de resctricion que no se piden
+		// en la tarea.
 		if (sesion == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una sesión nula.");
 		}
@@ -120,7 +122,8 @@ public class Modelo {
 
 	// Cita
 	public void insertar(Cita cita) throws OperationNotSupportedException {
-		//No pasa este test debido a las comprobaciones de resctricion que no se piden en la tarea.
+		// No pasa este test debido a las comprobaciones de resctricion que no se piden
+		// en la tarea.
 		if (cita == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una cita nula.");
 		}
