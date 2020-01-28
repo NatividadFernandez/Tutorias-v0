@@ -58,6 +58,7 @@ public class Modelo {
 
 	// Tutoría
 	public void insertar(Tutoria tutoria) throws OperationNotSupportedException {
+		//No pasa este test debido a las comprobaciones de resctricion que no se piden en la tarea.
 		if (tutoria == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una tutoría nula.");
 		}
@@ -67,7 +68,6 @@ public class Modelo {
 			throw new OperationNotSupportedException("ERROR: No existe profesor con ese DNI.");
 		}
 		tutorias.insertar(new Tutoria(profesor, tutoria.getNombre()));
-		//tutorias.insertar(tutoria);
 	}
 
 	public Tutoria buscar(Tutoria tutoria) {
@@ -88,6 +88,7 @@ public class Modelo {
 
 	// Sesion
 	public void insertar(Sesion sesion) throws OperationNotSupportedException {
+		//No pasa este test debido a las comprobaciones de resctricion que no se piden en la tarea.
 		if (sesion == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una sesión nula.");
 		}
@@ -99,8 +100,6 @@ public class Modelo {
 
 		sesiones.insertar(new Sesion(tutoria, sesion.getFecha(), sesion.getHoraInicio(), sesion.getHoraFin(),
 				sesion.getMinutosDuracion()));
-		
-		//sesiones.insertar(sesion);
 	}
 
 	public Sesion buscar(Sesion sesion) {
@@ -121,6 +120,7 @@ public class Modelo {
 
 	// Cita
 	public void insertar(Cita cita) throws OperationNotSupportedException {
+		//No pasa este test debido a las comprobaciones de resctricion que no se piden en la tarea.
 		if (cita == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una cita nula.");
 		}
@@ -134,8 +134,6 @@ public class Modelo {
 			throw new OperationNotSupportedException("ERROR: No existe ningún alumno con ese correo.");
 		}
 		citas.insertar(new Cita(alumno, sesion, cita.getHora()));
-		
-		//citas.insertar(cita);
 	}
 
 	public Cita buscar(Cita cita) {
